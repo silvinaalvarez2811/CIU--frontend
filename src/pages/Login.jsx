@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const usuariosPrueba = ["joaquin", "valen", "oscar"];
 
@@ -7,7 +8,9 @@ function Login() {
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
 
-  const handleSunmit = (evento) => {
+  const navigate = useNavigate();
+
+  const handleSubmit = (evento) => {
     evento.preventDefault();
 
     if (!usuariosPrueba.includes(userName)) {
@@ -21,14 +24,16 @@ function Login() {
     setError("");
     //para simular un login
     localStorage.setItem("usuario", userName);
+    navigate("/"); // si hay un error redirecciona a home
+
     alert(`Bienvenido ${userName}!`);
     //aqui deberia redireccionar a home
   };
 
   return (
     <>
-      <h2>Login</h2>
-      <form onSubmit={handleSunmit}>
+      <h2>Inicio de seción</h2>
+      <form onSubmit={handleSubmit}>
         <input
           type="text"
           placeholder="Usuario"
