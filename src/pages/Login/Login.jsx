@@ -1,61 +1,92 @@
 import { useState, useContext } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { UserContext } from "../../context/UserContext";
 
-const usuariosPrueba = ["joaquin", "valen", "oscar"];
-
-function Login() {
-  const [userName, setUserName] = useState("");
+const Login = () => {
+  const [nickName, setnickName] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
 
   const { login } = useContext(UserContext);
   const navigate = useNavigate();
 
-  const handleSubmit = (evento) => {
+  const handleSubmit = async (evento) => {
     evento.preventDefault();
 
-    if (!usuariosPrueba.includes(userName)) {
-      setError("Usuario Inexistente");
-      return;
-    }
-    if (password !== "123456") {
-      setError("Contraseña incorrecta");
-      return;
-    }
-    setError("");
-    //actualiza con el usuario logueado
-    login(userName);
+    try {
+      //con el fetch al backend dado
+      const response = await fetch("http://localhost:3001/users");
+      const usuarios = await response.json();
 
-    navigate("/"); // redirecciona a home
+      const usuarioEncontrado = usuarios.find((u) => u.nickName === nickName);
 
-    alert(`Bienvenido/a ${userName}!`);
+      if (!usuarioEncontrado) {
+        setError("El usuario no existe");
+        return;
+      }
+
+      if (password !== "123456") {
+        setError("Contraseña incorrecta");
+        return;
+      }
+
+      setError("");
+      console.log("Usuario logueado:", usuarioEncontrado);
+      login(usuarioEncontrado);
+      navigate("/profile");
+    } catch (error) {
+      console.error("Error al hacer login:", error);
+      setError("Error del servidor. Intentá más tarde.");
+    }
   };
 
   return (
-    <>
-      <h2>Inicio de seción</h2>
-      <form onSubmit={handleSubmit}>
-        <input
-          type="text"
-          placeholder="Usuario"
-          value={userName}
-          onChange={(evento) => setUserName(evento.target.value)}
-          required
-        />
-        <input
-          type="password"
-          placeholder="Contraseña"
-          value={password}
-          onChange={(evento) => setPassword(evento.target.value)}
-          required
-        />
-        <button type="submit">Ingresar</button>
-      </form>
-      {/* despues ver como se maneja el error*/}
-      {error && <p style={{ color: "red" }}>{error}</p>}
-    </>
+    <div className="min-h-screen flex items-center justify-center bg-gray-900 text-white px-4">
+      <div className="max-w-md w-full bg-gray-800 p-8 rounded-lg shadow-lg">
+        <h2 className="text-3xl font-bold mb-6 text-center">
+          Inicio de sesión
+        </h2>
+        <form onSubmit={handleSubmit} className="flex flex-col gap-4">
+          <input
+            type="text"
+            placeholder="Usuario"
+            value={nickName}
+            onChange={(e) => setnickName(e.target.value)}
+            required
+            className="p-3 rounded bg-gray-700 placeholder-gray-400 text-white 
+            focus:outline-none focus:ring-2 focus:ring-blue-500"
+          />
+          <input
+            type="password"
+            placeholder="Contraseña"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            required
+            className="p-3 rounded bg-gray-700 placeholder-gray-400 text-white 
+            focus:outline-none focus:ring-2 focus:ring-blue-500"
+          />
+          <button
+            type="submit"
+            className="bg-blue-600 hover:bg-blue-700 transition py-3 rounded font-semibold"
+          >
+            Ingresar
+          </button>
+        </form>
+
+        {error && <p className="text-red-500 mt-4 text-center">{error}</p>}
+
+        <p className="mt-6 text-center text-gray-400">
+          ¿No tenés cuenta?{" "}
+          <Link
+            to="/register"
+            className="text-blue-500 hover:underline font-semibold"
+          >
+            Registrate
+          </Link>
+        </p>
+      </div>
+    </div>
   );
-}
+};
 
 export default Login;

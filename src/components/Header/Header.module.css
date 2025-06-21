@@ -1,0 +1,17 @@
+.header {
+  background-color: var(--color-principal);
+  padding: 0.625rem 1.25rem;
+}
+
+.nav {
+  display: flex;
+  gap: 1rem;
+}
+.navLink {
+  color: aliceblue;
+  font-weight: bold;
+  text-decoration: none;
+}
+.NavLink:hover {
+  text-decoration: underline;
+}

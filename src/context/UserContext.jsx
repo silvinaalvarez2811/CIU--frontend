@@ -3,7 +3,7 @@ import { createContext, useState, useEffect } from "react";
 //createContext - para crear el contexto que permite guardar globalmente info
 //useEffect - para cargar info desde el localStorage si la hay
 
-export const UserContext = createContext();
+export const UserContext = createContext(null);
 
 //se crea el componente que envuelve a app y que da acceso a los datos aqui definidos
 export const UserProvider = ({ children }) => {
@@ -12,13 +12,13 @@ export const UserProvider = ({ children }) => {
   useEffect(() => {
     const storedUser = localStorage.getItem("usuario");
     if (storedUser) {
-      setUser(storedUser);
+      setUser(JSON.parse(storedUser));
     }
   }, []);
   //funcion para logear -  guarda en useState y en localstorage
-  const login = (userName) => {
-    setUser(userName);
-    localStorage.setItem("usuario", userName);
+  const login = (userObj) => {
+    setUser(userObj);
+    localStorage.setItem("usuario", JSON.stringify(userObj));
   };
   //limpia el estado y el localstorage
   const logout = () => {
@@ -32,3 +32,7 @@ export const UserProvider = ({ children }) => {
     </UserContext.Provider>
   );
 };
+
+//Provider es una propiedad de createContext
+//significa que el contexto UserContext va a proverr los valores de user, login y logout
+//que que todos los hijos que esten envueltos (wrap) por provider van a tener acceso
