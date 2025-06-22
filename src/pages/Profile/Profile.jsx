@@ -27,10 +27,6 @@ function Profile() {
       <p>
         <strong>Email:</strong> {user.email}
       </p>
-
-      <button onClick={handleLogout} className={styles.logoutButton}>
-        Cerrar sesión
-      </button>
     </div>
   );
 }

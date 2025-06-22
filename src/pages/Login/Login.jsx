@@ -33,7 +33,7 @@ const Login = () => {
       setError("");
       console.log("Usuario logueado:", usuarioEncontrado);
       login(usuarioEncontrado);
-      navigate("/profile");
+      navigate("/home");
     } catch (error) {
       console.error("Error al hacer login:", error);
       setError("Error del servidor. Intentá más tarde.");

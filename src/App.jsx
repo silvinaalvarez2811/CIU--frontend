@@ -15,11 +15,17 @@ function App() {
     <>
       {!rutasSinHeader.includes(location.pathname) && <Header />}
       <Routes>
-        <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         {/*Rutas Protegidas*/}
-
+        <Route
+          path="/"
+          element={
+            <RutaProtegida>
+              <Home />
+            </RutaProtegida>
+          }
+        />
         <Route
           path="/profile"
           element={

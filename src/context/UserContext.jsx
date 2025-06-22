@@ -1,5 +1,5 @@
 import { createContext, useState, useEffect } from "react";
-
+5;
 //createContext - para crear el contexto que permite guardar globalmente info
 //useEffect - para cargar info desde el localStorage si la hay
 

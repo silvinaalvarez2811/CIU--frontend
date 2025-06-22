@@ -14,6 +14,18 @@ const Register = () => {
     setError(""); // limpio error previo
 
     try {
+      // get de users - trae todos
+      const getUsers = await fetch("http://localhost:3001/users");
+      const usuarios = await getUsers.json();
+      //se busca si hay alguno igual al que se quiere registrar
+      const existsNickName = usuarios.find(
+        (user) => user.nickName === nickName
+      );
+      if (existsNickName) {
+        setError("Es nombre de ususario ya existe.Elegí otro");
+        return;
+      }
+      //si no existe, se registra
       const response = await fetch("http://localhost:3001/users", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -27,11 +39,11 @@ const Register = () => {
       }
 
       const nuevoUsuario = await response.json();
-      console.log("Usuario recibido del backend:", nuevoUsuario);
+      //console.log("Usuario recibido del backend:", nuevoUsuario);
 
       login(nuevoUsuario); // guardo usuario en contexto y localStorage
       alert(`Te has registrado correctamente, ${nuevoUsuario.nickName}`);
-      navigate("/profile");
+      navigate("/home");
     } catch (error) {
       console.error("Error en registro:", error);
       setError("Hubo un error al registrarte. Por favor, volvé a intentar");
