@@ -42,7 +42,7 @@ const NewPost = () => {
         body: JSON.stringify({
           description,
           userId: user.id,
-          tagsIds: tags, // asi??
+          tagIds: selectedTags, // asi??
         }),
       });
 
@@ -56,12 +56,12 @@ const NewPost = () => {
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
             url,
-            postId: nuevoPost.id, // Sequelize usa `id`
+            postId: nuevoPost.id,
           }),
         });
       }
 
-      navigate("/profile");
+      navigate("/home");
     } catch (error) {
       console.error("Error al crear el post:", error);
       setError("Error al crear la publicación");

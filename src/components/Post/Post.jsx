@@ -23,11 +23,16 @@ const Post = ({ post }) => {
   return (
     <div className="card mb-4" style={{ width: "18rem" }}>
       {images.length > 0 && (
-        <img
-          src={images[0].url}
-          className="card-img-top"
-          alt="Imagen del post"
-        />
+        <div>
+          {images.map((imagen, index) => (
+            <img
+              key={index}
+              src={imagen.url}
+              className="card-img-top mb-2"
+              alt={`Imagen ${index + 1}`}
+            />
+          ))}
+        </div>
       )}
 
       <div className="card-body">
