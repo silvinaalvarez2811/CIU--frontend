@@ -41,8 +41,8 @@ const NewPost = () => {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           description,
-          userId: user.id, // OJO: Sequelize usa `id`, no `_id`
-          tags: selectedTags, // Array de IDs, ej: [1, 2]
+          userId: user.id,
+          tagsIds: tags, // asi??
         }),
       });
 
