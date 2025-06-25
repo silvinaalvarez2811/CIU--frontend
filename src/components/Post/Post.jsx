@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 const Post = ({ post }) => {
   //useStste podria ser []en images? probar
-  const [images, setImages] = useState("");
+  const [images, setImages] = useState([]);
 
   useEffect(() => {
     const obtenerImagen = async () => {
@@ -11,10 +11,12 @@ const Post = ({ post }) => {
         const respuesta = await fetch(
           `http://localhost:3001/postimages/post/${post.id}`
         );
+        if (!respuesta.ok) throw new Error("Error en la respuesta");
         const data = await respuesta.json();
         setImages(data);
       } catch (error) {
         console.error("Error al obtener imágenes:", error);
+        setImages([]); //para que no quede undefined
       }
     };
     obtenerImagen();

@@ -111,7 +111,7 @@ const NewPost = () => {
               value={url}
               onChange={(e) => handleImageChange(index, e.target.value)}
               className="form-control mb-2"
-              placeholder="https://via.placeholder.com/300"
+              placeholder="Pegá la URL de tu imagen, ej: https://miweb.com/imagen.jpg"
             />
           ))}
           <button

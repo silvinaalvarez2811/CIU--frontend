@@ -22,7 +22,7 @@ const Header = () => {
           Perfil
         </NavLink>
         <NavLink to="/newPost" className={styles.navLink}>
-          Publicaciones
+          Publicar
         </NavLink>
         {user ? (
           <>

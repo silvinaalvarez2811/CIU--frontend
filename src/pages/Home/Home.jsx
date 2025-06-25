@@ -18,6 +18,7 @@ const Home = () => {
         setCargando(false);
       } catch (error) {
         console.error("Error al obtener los posts:", error);
+        setError(true);
         setCargando(false);
       }
     };
