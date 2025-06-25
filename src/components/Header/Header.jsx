@@ -14,7 +14,8 @@ const Header = () => {
 
   return (
     <header className={styles.header}>
-      <nav className={styles.nav}>
+      <nav className={styles.navContainer}>
+      
         <NavLink to="/" className={styles.navLink}>
           Inicio
         </NavLink>
@@ -22,8 +23,9 @@ const Header = () => {
           Perfil
         </NavLink>
         <NavLink to="/newPost" className={styles.navLink}>
-          Publicaciones
+          Publicar
         </NavLink>
+        
         {user ? (
           <>
             <span className={styles.navText}>Hola, {user.nickName}</span>
