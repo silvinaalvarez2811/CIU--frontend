@@ -12,9 +12,12 @@ const Home = () => {
   useEffect(() => {
     const obtenerPosts = async () => {
       try {
-        const respuesta = await fetch("http://localhost:3001/posts");
-        const data = await respuesta.json();
-        setPosts(data);
+        const respPost = await fetch("http://localhost:3001/posts");
+        const dataPost = await respPost.json();
+        setPosts(dataPost);
+
+        const respAutor = await fetch("http://localhost:3001/posts");
+
         setCargando(false);
       } catch (error) {
         console.error("Error al obtener los posts:", error);

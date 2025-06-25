@@ -4,22 +4,40 @@ import { Link } from "react-router-dom";
 const Post = ({ post }) => {
   //useStste podria ser []en images? probar
   const [images, setImages] = useState([]);
+  const [comments, setComments] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const obtenerImagen = async () => {
+    const fetchData = async () => {
       try {
-        const respuesta = await fetch(
+        //traer imagenes
+        const imagesResponse = await fetch(
           `http://localhost:3001/postimages/post/${post.id}`
         );
-        if (!respuesta.ok) throw new Error("Error en la respuesta");
-        const data = await respuesta.json();
-        setImages(data);
+        if (!imagesResponse.ok) {
+          throw new Error("Error al cargar las imagenes");
+        }
+        const imagesdata = await imagesResponse.json();
+        setImages(imagesdata);
+
+        //obtener comentarios
+        const commentsResponse = await fetch(
+          `http://localhost:3001/comments/post/${post.id}`
+        );
+        if (!commentsResponse.ok) {
+          throw new Error("Error al cargar los comentarios");
+        }
+        const commentsData = await commentsResponse.json();
+        setComments(commentsData);
+
+        setLoading(false);
       } catch (error) {
-        console.error("Error al obtener imágenes:", error);
-        setImages([]); //para que no quede undefined
+        console.error("Error en fetchs del post:", error);
+        setLoading(false);
       }
     };
-    obtenerImagen();
+
+    fetchData();
   }, [post.id]);
 
   return (
@@ -51,9 +69,29 @@ const Post = ({ post }) => {
         )}
 
         <p className="card-text">
-          {post.comments?.length || 0} comentario
-          {post.comments?.length !== 1 ? "s" : ""}
+          <strong>Autor:</strong> {post.User?.nickName || "Desconocido"}
         </p>
+
+        <p className="card-text">
+          <strong>Comentarios:</strong> {comments.length}{" "}
+          {comments.length === 1 ? "comentario" : "comentarios"}
+        </p>
+
+        {comments.length > 0 && (
+          <div>
+            <p>
+              <strong>Primeros comentarios:</strong>
+            </p>
+            <ul className="list-unstyled">
+              {comments.slice(0, 2).map((comentario) => (
+                <li key={comentario.id} className="mb-1">
+                  🗨️ {comentario.content} —{" "}
+                  <em>{comentario.User?.nickName || "Anon"}</em>
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
 
         <Link to={`/post/${post.id}`} className="btn btn-primary">
           Ver más
