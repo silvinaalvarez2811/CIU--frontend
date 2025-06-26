@@ -1,44 +1,87 @@
 .header {
-  background-color: var(--color-principal);
+  background-color: var(--color-fondo-2);
   padding: 0.625rem 1.25rem;
 }
 
-.nav {
+.navContainer {
   display: flex;
-  gap: 1rem;
+  justify-content: space-between;
+  align-items: center;
+
+  flex-wrap: wrap;
+  padding: 0 1rem;
 }
+.logoContainer {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.logoImg {
+  height: 40px;
+  background-color: white;
+  border-radius: 35%;
+  padding: 4px;
+}
+.logoText {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: var(--color-gris-claro);
+}
+.logoNet {
+  font-size: 1.3rem;
+  color: var(--color-rojo-2);
+}
+/*contenedor de links centrales*/
+.navCenter {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  gap: 10rem;
+}
+/* Links individuales */
 .navLink {
-  color: aliceblue;
+  display: flex;
+  align-items: center;
+  color: var(--color-gris-claro);
   font-weight: bold;
   text-decoration: none;
-}
-.NavLink:hover {
-  text-decoration: underline;
-}
-.logoutButton {
-  background-color: #289b6d; /* rojo */
-  color: white;
-  border: none;
-  padding: 0.5rem 1rem;
-  border-radius: 5px;
-  cursor: pointer;
+  transition: color 0.3s, transform 0.3s;
 }
 
-.logoutButton:hover {
-  background-color: #18533b;
+.navLink:hover {
+  transform: scale(1.1);
+  color: white;
 }
 
 .navText {
-  margin-right: 1rem;
-  color:white;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  color: white;
 }
 
-/*centro las solapas del menu*/
-.navContainer {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 90px; /* espacio entre enlaces */
-  
+.logoutButton {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.4rem;
+}
 
+.logoutButton:hover {
+  opacity: 0.8;
+}
+
+@media (max-width: 768px) {
+  .navContainer {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .navLinks {
+    gap: 1rem;
+  }
+
+  .navLink {
+    font-size: 1rem;
+  }
 }
