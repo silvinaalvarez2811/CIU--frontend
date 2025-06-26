@@ -35,4 +35,4 @@ export const UserProvider = ({ children }) => {
 
 //Provider es una propiedad de createContext
 //significa que el contexto UserContext va a proverr los valores de user, login y logout
-//que que todos los hijos que esten envueltos (wrap) por provider van a tener acceso
+//que  todos los hijos que esten envueltos (wrap) por provider van a tener acceso
