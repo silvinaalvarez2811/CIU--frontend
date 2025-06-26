@@ -1,10 +1,14 @@
 .footer {
+  position: fixed;
+  bottom: 0;  
+  left: 0;
+  width: 100%;
+  height: 100px;
   background-color: #1e1e1e;
   color: #fff;
-  min-height: 100px;
   padding: 2rem 0;
   text-align: center;
-  margin-top: auto;
+  z-index: 100; 
 }
 
 .footer a {
@@ -13,20 +17,21 @@
   text-decoration: none;
   transition: color 0.3s;
 }
+
 .footer a:hover {
-  color: #660909;
+  color:white;
 }
 
-.footer-social a {
-  font-size: 1.5rem;
-  margin: 0 0.5rem;
+.footer-links,
+.footer-social {
+  display: flex;
+  justify-content: center;
+  gap: 4rem; /* Aumentá el espacio entre columnas */
+  flex-wrap: wrap;
 }
 
-.footer-copy {
-  margin-top: 1rem;
-  font-size: 0.9rem;
-  color: #888;
-}
+
+
 
 @media (max-width: 600px) {
   .footer-links {

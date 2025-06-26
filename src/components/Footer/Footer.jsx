@@ -16,14 +16,8 @@ function Footer() {
         <div className="footer-links">
           <a href="/about">Sobre Nosotros</a>
           <a href="/contact">Contacto</a>
-          <a href="/terms">Términos</a>
+          
         </div>
-        <div className="footer-social">
-          <a href="#"><i className="fab fa-instagram"></i></a>
-          <a href="#"><i className="fab fa-twitter"></i></a>
-          <a href="#"><i className="fab fa-github"></i></a>
-        </div>
-        <p className="footer-copy">© 2025 UnaHur | Todos los derechos reservados.</p>
       </div>
     </footer>
   );
