@@ -28,6 +28,7 @@ const Home = () => {
     obtenerPosts();
   }, []);
   return (
+    <>
     <div className="container mt-4">
       <h2 className="text-center text-primary mb-4">Hola, {user.nickName}!</h2>
       {cargando ? (
@@ -44,6 +45,7 @@ const Home = () => {
         </div>
       )}
     </div>
+    </>
   );
 };
 export default Home;

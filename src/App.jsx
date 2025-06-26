@@ -7,13 +7,21 @@ import NewPost from "./pages/NewPost/NewPost";
 import PostDetail from "./pages/PostDetail/PostDetail";
 import RutaProtegida from "./components/RutaProtegida";
 import Header from "./components/Header/Header";
+import Footer from "./components/Footer/Footer"
+
 function App() {
   const location = useLocation();
+  const path = location.pathname.replace(/\/+$/, "").toLowerCase();
   const rutasSinHeader = ["/login", "/register"];
+  const rutasSinFooter = ["/login", "/register"];
+  
+
 
   return (
+
     <>
-      {!rutasSinHeader.includes(location.pathname) && <Header />}
+      {!rutasSinHeader.includes(path) && <Header />}
+      <main>
       <Routes>
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
@@ -52,7 +60,11 @@ function App() {
         />
         <Route path="*" element={<Navigate to="/" />} />
       </Routes>
+      </main>
+      {!rutasSinFooter.includes(path) && <Footer />}
+      
     </>
+      
   );
 }
 

@@ -30,5 +30,15 @@
 
 .navText {
   margin-right: 1rem;
-  color: #93c5fd;
+  color:white;
+}
+
+/*centro las solapas del menu*/
+.navContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 90px; /* espacio entre enlaces */
+  
+
 }
