@@ -1,7 +1,12 @@
-import styles from "./PostDetal.module.css";
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+
+import styles from "./PostDetail.module.css";
 import { useParams, useNavigate } from "react-router-dom";
 import { useState, useEffect, useContext } from "react";
 import { UserContext } from "../../context/UserContext";
+import Post from "../../components/Post/Post";
 
 const PostDetail = () => {
   const { id } = useParams();
@@ -100,20 +105,31 @@ const PostDetail = () => {
       )}
 
       {images.length > 0 && (
-        <div className="mb-3">
+        <Slider
+          dots={true}
+          infinite={true}
+          speed={500}
+          slidesToShow={1}
+          slidesToScroll={1}
+          arrows={true}
+        >
           {images.map((img, idx) => (
-            <img
-              key={idx}
-              src={img.url}
-              alt={`Imagen ${idx + 1}`}
-              className="img-fluid mb-2"
-              style={{ maxHeight: "300px", maxWidth: "60%" }}
-            />
+            <div key={idx}>
+              <img
+                src={img.url}
+                alt={`Imagen ${idx + 1}`}
+                className="img-fluid mb-2"
+                style={{
+                  height: "300px",
+                  width: "100%",
+                  objectFit: "cover",
+                  borderRadius: "10px",
+                }}
+              />
+            </div>
           ))}
-        </div>
+        </Slider>
       )}
-
-      <hr />
 
       <h4>Comentarios ({comments.length})</h4>
       {comments.length === 0 ? (

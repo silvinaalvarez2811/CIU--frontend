@@ -1,4 +1,3 @@
-import React from "react";
 import styles from "./Home.module.css";
 import { useContext, useEffect, useState } from "react";
 import { UserContext } from "../../context/UserContext";
@@ -29,22 +28,21 @@ const Home = () => {
   }, []);
   return (
     <>
-    <div className="container mt-4">
-      <h2 className="text-center text-primary mb-4">Hola, {user.nickName}!</h2>
-      {cargando ? (
-        <p className="text-center">Cargando publicaciones...</p>
-      ) : posts.length === 0 ? (
-        <p className="text-center">No hay publicaciones para mostrar</p>
-      ) : (
-        <div className="row">
-          {posts.map((post) => (
-            <div key={post.id} className="col-md-4 mb-4">
-              <Post post={post} />
-            </div>
-          ))}
-        </div>
-      )}
-    </div>
+      <div className="container mt-4">
+        {cargando ? (
+          <p className="text-center">Cargando publicaciones...</p>
+        ) : posts.length === 0 ? (
+          <p className="text-center">No hay publicaciones para mostrar</p>
+        ) : (
+          <div className={styles.row}>
+            {posts.map((post) => (
+              <div key={post.id} className="col-md-4 mb-4">
+                <Post post={post} />
+              </div>
+            ))}
+          </div>
+        )}
+      </div>
     </>
   );
 };

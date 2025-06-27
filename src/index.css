@@ -32,7 +32,9 @@ body {
   color: var(--color-texto-principal);
   font-family: "Montserrat", "Lato", "Nunito", "Ubuntu", sans-serif;
 }
-
+main {
+  padding-bottom: 120px;
+}
 h1,
 h2,
 h3 {
@@ -59,4 +61,13 @@ button.primary {
 
 button.primary:hover {
   background-color: var(--color-alerta);
+}
+/*color de todos los dots del carrousel*/
+.slick-dots li button:before {
+  color: #e0e0e0 !important;
+  opacity: 1;
+}
+/*color del boton activo*/
+.slick-dots li.slick-active button:before {
+  color: white !important;
 }

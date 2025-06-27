@@ -1,5 +1,13 @@
-import React, { useEffect, useState } from "react";
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import styles from "./Post.module.css";
+import Avatar from "../Avatar/Avatar";
+import { FaCommentDots } from "react-icons/fa";
+//import PostContent from "./PostContent";
 
 const Post = ({ post }) => {
   //useStste podria ser []en images? probar
@@ -40,61 +48,75 @@ const Post = ({ post }) => {
     fetchData();
   }, [post.id]);
 
+  {
+  }
   return (
-    <div className="card mb-4" style={{ width: "18rem" }}>
+    <div className={styles.postCard}>
+      <div className={styles.usuarioCard}>
+        <Avatar user={post.User} extraClass="avatarPost" />
+        <span className={styles.usuarioCard}>{post.User?.nickName}</span>
+      </div>
       {images.length > 0 && (
-        <div>
+        <Slider
+          {...{
+            dots: true,
+            infinite: true,
+            speed: 500,
+            slidesToShow: 1,
+            slidesToScroll: 1,
+            arrows: true,
+          }}
+        >
           {images.map((imagen, index) => (
-            <img
-              key={index}
-              src={imagen.url}
-              className="card-img-top mb-2"
-              alt={`Imagen ${index + 1}`}
-            />
+            <div key={index} className={styles.cardImage}>
+              <img
+                src={imagen.url}
+                className="card-img-top mb-2"
+                alt={`Imagen ${index + 1}`}
+              />
+            </div>
           ))}
-        </div>
+        </Slider>
       )}
 
-      <div className="card-body">
-        <h5 className="card-title">{post.description}</h5>
-
+      <div className={styles.cardBody}>
+        <p className={styles.cardComments}>
+          <FaCommentDots style={{ marginRight: "10px" }} /> {comments.length}{" "}
+        </p>
+        <h5 className={styles.cardTitle}>{post.description}</h5>
         {post.Tags && post.Tags.length > 0 && (
-          <div className="mb-2">
+          <div className={styles.cardTags}>
             {post.Tags.map((tag) => (
-              <span key={tag.id} className="badge bg-secondary me-1">
+              <span key={tag.id} className={styles.cardText}>
                 #{tag.name}
               </span>
             ))}
           </div>
         )}
 
-        <p className="card-text">
-          <strong>Autor:</strong> {post.User?.nickName || "Desconocido"}
-        </p>
-
-        <p className="card-text">
-          <strong>Comentarios:</strong> {comments.length}{" "}
-          {comments.length === 1 ? "comentario" : "comentarios"}
-        </p>
-
         {comments.length > 0 && (
           <div>
-            <p>
-              <strong>Primeros comentarios:</strong>
-            </p>
-            <ul className="list-unstyled">
-              {comments.slice(0, 2).map((comentario) => (
-                <li key={comentario.id} className="mb-1">
-                  🗨️ {comentario.content} —{" "}
-                  <em>{comentario.User?.nickName || "Anon"}</em>
+            <ul className={styles.listComments}>
+              {comments.map((comentario) => (
+                <li key={comentario.id} className={styles.comment}>
+                  <em
+                    style={{
+                      fontWeight: "bold",
+                      marginRight: "10px",
+                      fontFamily: "Lato",
+                    }}
+                  >
+                    {comentario.User?.nickName || "Anon"}
+                  </em>
+                  {comentario.content}{" "}
                 </li>
               ))}
             </ul>
           </div>
         )}
 
-        <Link to={`/post/${post.id}`} className="btn btn-primary">
-          Ver más
+        <Link to={`/post/${post.id}`} className={styles.navigate}>
+          Añade un comentario
         </Link>
       </div>
     </div>

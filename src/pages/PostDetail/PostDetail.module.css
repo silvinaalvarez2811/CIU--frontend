@@ -1,0 +1,8 @@
+.postDetailWrapper {
+  width: 90%;
+  max-width: 700px;
+  align-items: center;
+  padding: 1rem;
+  border-radius: 30%;
+  background-color: black;
+}

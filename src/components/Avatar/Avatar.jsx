@@ -1,5 +1,5 @@
 import styles from "./Avatar.module.css";
-const Avatar = ({ user }) => {
+const Avatar = ({ user, extraClass = "" }) => {
   const getInitials = (name) => {
     if (!name) {
       return "";
@@ -15,7 +15,11 @@ const Avatar = ({ user }) => {
     }
   };
 
-  return <div className={styles.avatar}>{getInitials(user.nickName)}</div>;
+  return (
+    <div className={`${styles.avatar} ${styles[extraClass]}`}>
+      {getInitials(user.nickName)}
+    </div>
+  );
 };
 
 export default Avatar;
