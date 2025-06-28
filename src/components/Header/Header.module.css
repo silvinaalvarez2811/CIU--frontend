@@ -1,6 +1,11 @@
 .header {
   background-color: var(--color-fondo-2);
-  padding: 0.625rem 1.25rem;
+  padding: 0.625rem 1rem;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 999; /* que siempre se vea el header*/
 }
 
 .navContainer {

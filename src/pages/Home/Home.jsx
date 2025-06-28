@@ -4,6 +4,7 @@ import { UserContext } from "../../context/UserContext";
 import Post from "../../components/Post/Post";
 import { Link } from "react-router-dom";
 import { MdOutlinePostAdd } from "react-icons/md";
+import Banner from "../../components/Banner/Banner";
 
 const Home = () => {
   const { user } = useContext(UserContext);
@@ -30,6 +31,9 @@ const Home = () => {
   }, []);
   return (
     <>
+      <div className={styles.bannerDemo}>
+        <Banner />
+      </div>
       <div className={styles.container}>
         <div className={styles.createPost}>
           <Link to={`/newPost/${posts.id}`} className={styles.navigate}>
