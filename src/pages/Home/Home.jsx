@@ -2,6 +2,8 @@ import styles from "./Home.module.css";
 import { useContext, useEffect, useState } from "react";
 import { UserContext } from "../../context/UserContext";
 import Post from "../../components/Post/Post";
+import { Link } from "react-router-dom";
+import { MdOutlinePostAdd } from "react-icons/md";
 
 const Home = () => {
   const { user } = useContext(UserContext);
@@ -28,15 +30,20 @@ const Home = () => {
   }, []);
   return (
     <>
-      <div className="container mt-4">
+      <div className={styles.container}>
+        <div className={styles.createPost}>
+          <Link to={`/newPost/${posts.id}`} className={styles.navigate}>
+            <MdOutlinePostAdd /> <p>¿</p>
+          </Link>
+        </div>
         {cargando ? (
-          <p className="text-center">Cargando publicaciones...</p>
+          <p className={styles.textCenter}>Cargando publicaciones...</p>
         ) : posts.length === 0 ? (
-          <p className="text-center">No hay publicaciones para mostrar</p>
+          <p className={styles.textCenter}>No hay publicaciones para mostrar</p>
         ) : (
           <div className={styles.row}>
             {posts.map((post) => (
-              <div key={post.id} className="col-md-4 mb-4">
+              <div key={post.id} className={styles.rowPost}>
                 <Post post={post} />
               </div>
             ))}

@@ -1,0 +1,33 @@
+h1{
+    text-align: center;
+    margin-bottom: 1.5rem;
+    margin-top: 1rem;
+}
+
+li, p{
+  margin-bottom: 1.5rem;
+  padding: auto;
+  margin: 1rem; 
+
+}
+
+.conteiner {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3 columnas iguales */
+  gap: 2rem; /* espacio entre columnas */
+  padding: 1rem;
+}
+
+.logo {
+    width: auto;         /* Ajustá el tamaño según lo que necesites */
+    height: 200px;
+    display: block;
+    margin: 0 auto; 
+
+}
+
+@media (max-width: 768px) {
+  .conteiner {
+    grid-template-columns: 1fr; /* una sola columna en mobile */
+  }
+}

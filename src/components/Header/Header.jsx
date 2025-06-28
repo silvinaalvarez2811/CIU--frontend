@@ -33,8 +33,8 @@ const Header = () => {
           <NavLink to="/profile" className={styles.navLink}>
             Perfil
           </NavLink>
-          <NavLink to="/newPost" className={styles.navLink}>
-            Publicar
+          <NavLink to="/about-us" className={styles.navLink}>
+            Sobre Nosotros
           </NavLink>
         </div>
         {user ? (

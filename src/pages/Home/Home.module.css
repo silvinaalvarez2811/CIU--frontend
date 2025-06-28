@@ -1,8 +1,18 @@
 .row {
   align-items: center;
-
   display: flex;
   flex-wrap: nowrap;
-
   flex-direction: column;
+}
+.navigate {
+  align-items: center;
+}
+
+.createPost {
+  max-width: 600px;
+  margin: 1rem auto;
+  padding: 1rem;
+  border: 2px solid #2f2f2f;
+  background-color: #e6e4e4;
+  border-radius: 10px;
 }
