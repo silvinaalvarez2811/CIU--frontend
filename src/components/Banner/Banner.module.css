@@ -26,3 +26,8 @@
   font-family: "Playwrite US Modern", sans-serif;
   font-size: 2rem;
 }
+@media (max-width: 1024px) {
+  .banner {
+    display: none;
+  }
+}

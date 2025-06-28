@@ -21,7 +21,7 @@ const Header = () => {
       <nav className={styles.navContainer}>
         <div className={styles.logoContainer}>
           <img src={logo} alt="logo" className={styles.logoImg} />
-          <p className={styles.logoText}>
+          <p className={`${styles.logoText} ${styles.hideOnMobile}`}>
             UnaHur Anti-Social <span className={styles.logoNet}>Net</span>
           </p>
         </div>
@@ -56,8 +56,12 @@ const Header = () => {
         </div>
         {user ? (
           <div className={styles.navText}>
-            <span>Hola, {user.nickName}</span>
-            {user && <Avatar user={user} />}
+            <span className={styles.hideOnMobile}>Hola, {user.nickName}</span>
+            {user && (
+              <div className={styles.hideOnMobile}>
+                <Avatar user={user} />
+              </div>
+            )}
             <button onClick={handleLogout} className={styles.logoutButton}>
               <TbLogout size={27} color="white" />
             </button>
