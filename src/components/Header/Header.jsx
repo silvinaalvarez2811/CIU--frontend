@@ -26,14 +26,31 @@ const Header = () => {
           </p>
         </div>
         <div className={styles.navCenter}>
-          <NavLink to="/" className={styles.navLink}>
+          <NavLink
+            to="/"
+            className={({ isActive }) =>
+              isActive ? `${styles.navLink} ${styles.active}` : styles.navLink
+            }
+          >
             <AiFillHome style={{ marginRight: "0.5rem" }} size={25} />
             Inicio
           </NavLink>
-          <NavLink to="/profile" className={styles.navLink}>
+
+          <NavLink
+            to="/profile"
+            className={({ isActive }) =>
+              isActive ? `${styles.navLink} ${styles.active}` : styles.navLink
+            }
+          >
             Perfil
           </NavLink>
-          <NavLink to="/about-us" className={styles.navLink}>
+
+          <NavLink
+            to="/about-us"
+            className={({ isActive }) =>
+              isActive ? `${styles.navLink} ${styles.active}` : styles.navLink
+            }
+          >
             Sobre Nosotros
           </NavLink>
         </div>

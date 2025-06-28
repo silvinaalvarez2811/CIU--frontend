@@ -57,7 +57,10 @@
   transform: scale(1.1);
   color: white;
 }
-
+.active {
+  font-weight: bold;
+  color: #d95d39;
+}
 .navText {
   display: flex;
   align-items: center;

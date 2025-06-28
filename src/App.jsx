@@ -9,16 +9,25 @@ import RutaProtegida from "./components/RutaProtegida";
 import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
 import AboutUs from "./pages/AboutUs/AboutUs";
+import Banner from "./components/Banner/Banner";
 
 function App() {
   const location = useLocation();
   const path = location.pathname.replace(/\/+$/, "").toLowerCase();
   const rutasSinHeader = ["/login", "/register"];
   const rutasSinFooter = ["/login", "/register"];
-
+  const rutasSinBanner = [
+    "/login",
+    "/register",
+    "/profile",
+    "/newpost",
+    "/post/:id",
+    "/about-us",
+  ];
   return (
     <>
       {!rutasSinHeader.includes(path) && <Header />}
+      {!rutasSinBanner.includes(path) && <Banner />}
       <main>
         <Routes>
           <Route path="/login" element={<Login />} />

@@ -1,0 +1,61 @@
+.asideContainer {
+  background-color: #4e4c4c;
+  padding: 1.5rem;
+  border-radius: 10px;
+  color: rgb(38, 37, 37);
+  border: 10px solid transparent; /* tamaño del borde */
+  border-style: solid;
+  border-image-slice: 1;
+  border-image-source: linear-gradient(90deg, #de511d, #f1e950, #f73838);
+}
+
+.cardInscription img {
+  width: 100%;
+  border-radius: 10px;
+  margin-bottom: 0.5rem;
+}
+.cardImage {
+  width: 100%; /* Que ocupe todo el ancho del contenedor */
+  height: auto; /* Para mantener la proporción */
+  border-radius: 10px; /* Bordes redondeados para suavizar */
+  object-fit: cover; /* Que la imagen recorte y cubra el área sin deformarse */
+  display: block; /* Quita espacios extra debajo de la imagen */
+}
+.cardText {
+  font-family: "Montserrat";
+  font-size: 1.2rem;
+  text-align: center;
+}
+.text {
+  background-color: whitesmoke;
+  border-radius: 10px;
+  padding: 0.5rem;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+  font-family: "Ubuntu";
+  font-size: large;
+  font-weight: bolder;
+}
+.cardText h3 {
+  margin-bottom: 0.5rem;
+  font-size: 1.5rem;
+  text-align: center;
+  font-weight: bold;
+  font-family: "Montserrat";
+  margin-top: 1rem;
+  color: aliceblue;
+}
+
+.cardText a {
+  color: #d95d39;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-weight: bolder;
+}
+
+.cardText a:hover {
+  text-decoration: underline;
+}
+.fechaClave {
+  background-color: aliceblue;
+  border-radius: 10px;
+}
