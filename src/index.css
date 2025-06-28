@@ -33,9 +33,11 @@ body {
   font-family: "Montserrat", "Lato", "Nunito", "Ubuntu", sans-serif;
 }
 main {
-  padding-bottom: 120px;
-  padding-top: 100px;
+  padding-top: 0; /*esto esta agregandole espacios al banner y a 
+  la pagina de login*/
 }
+
+
 h1,
 h2,
 h3 {
