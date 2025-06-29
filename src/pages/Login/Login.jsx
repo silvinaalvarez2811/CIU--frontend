@@ -5,6 +5,9 @@ import carusel1 from "../../assets/carusel1.jpg";
 import carusel2 from "../../assets/carusel2.jpg";
 import carusel3 from "../../assets/carusel3.jpg";
 import styles from "./Login.module.css";
+import { FaRegEyeSlash } from "react-icons/fa";
+import { FaEye } from "react-icons/fa";
+
 
 const images = [carusel1, carusel2, carusel3];
 
@@ -13,6 +16,7 @@ const Login = () => {
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [showPassword, setShowPassword] = useState(false);
 
   const { login } = useContext(UserContext);
   const navigate = useNavigate();
@@ -51,6 +55,7 @@ const Login = () => {
   };
 
   return (
+    
     <div className= {styles ["login-container"]}>
       {/* Carrusel de fondo */}
       <div className={styles ["carousel-wrapper"]}>
@@ -66,8 +71,8 @@ const Login = () => {
 
       {/* Formulario */}
       <div className={styles["login-overlay"]}>
-        <div className={styles["login-form"]}>
-          <h2>Inicio de sesión</h2>
+        <div className={styles["login-form"]} >
+          <h2 className="text-2xl font-bold mb-6 text-center">Inicio de sesión</h2>
           <form onSubmit={handleSubmit}>
             <input
               type="text"
@@ -77,17 +82,28 @@ const Login = () => {
               required
               className={styles["login-input"]}
             />
+            
+            {/*para que oculte la contraseña*/}
+          <div className={styles["password-wrapper"]}>
             <input
-              type="password"
+              type={showPassword ? "text" : "password"}
               placeholder="Contraseña"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               required
               className={styles["login-input"]}
             />
+            <span
+              className={styles["toggle-password"]}
+              onClick={() => setShowPassword((prev) => !prev)}
+            >
+              {showPassword ? <FaEye /> : <FaRegEyeSlash />}
+            </span>
+          </div>
+
             <button
               type="submit"
-              class="btn btn-secondary btn-sm">
+              class=" w-full bg-orange-600 hover:bg-yellow-700 transition py-3 rounded font-semibold">
               Ingresar
             </button>
           </form>

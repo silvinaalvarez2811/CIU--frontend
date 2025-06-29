@@ -1,6 +1,9 @@
 import { useState, useContext } from "react";
 import { UserContext } from "../../context/UserContext";
 import { useNavigate } from "react-router-dom";
+import logo from "../../assets/antisocial-logo.png"
+import background from "../../assets/fondo-register2.jpg"
+import style from "../Register/Register.module.css"
 
 const Register = () => {
   const [nickName, setNickName] = useState("");
@@ -51,9 +54,14 @@ const Register = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-900 text-white px-4">
+    <div className={style["body-register"]} style={{ backgroundImage: `url(${background})` }}>
+    <div className="min-h-screen flex items-center justify-center text-white px-4">
       <div className="max-w-md w-full bg-gray-800 p-8 rounded-lg shadow-lg">
-        <h2 className="text-3xl font-bold mb-6 text-center">Registro</h2>
+       <div className={style["conteiner-logo"]}>
+          <img src={logo} alt="Logo" className={style.logo} />
+        </div>
+        <h2 className="text-2xl font-bold mb-6 text-center">Registro</h2>
+        <p>Registrate para ver fotos de tus amigos</p>
         <form onSubmit={handleSubmit} className="flex flex-col gap-4">
           <input
             type="text"
@@ -73,7 +81,7 @@ const Register = () => {
           />
           <button
             type="submit"
-            className="bg-blue-600 hover:bg-blue-700 transition py-3 rounded font-semibold"
+            className="bg-orange-600 hover:bg-yellow-700 transition py-3 rounded font-semibold"
           >
             Registrarse
           </button>
@@ -81,6 +89,7 @@ const Register = () => {
 
         {error && <p className="text-red-500 mt-4 text-center">{error}</p>}
       </div>
+    </div>
     </div>
   );
 };
