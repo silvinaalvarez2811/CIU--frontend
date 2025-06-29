@@ -20,8 +20,8 @@ return (
         iniciar sesión, crear publicaciones, ver contenidos, interactuar con comentarios y navegar perfiles, 
         todo sobre una interfaz pensada para ser dinamica.</p>
         
-    <div className= {styles.conteiner}>
-        <div className="conteiner-1">
+    <div className= {styles.container}>
+        <div className="container-1">
             <img src= {logo} className={styles.logo}/>
             <p>
                 El desarrollo incluye tecnologías clave de React, useContext para manejar sesiones simuladas,
@@ -30,14 +30,14 @@ return (
                 el uso de formularios controlados para el manejo preciso de entradas del usuario.
             </p>
         </div>
-        <div className="conteiner-2">
+        <div className="container-2">
             <img src= {logo2} className={styles.logo}/>    
             <p>
                 La autenticación fue simplificada: se emplea una contraseña fija para facilitar la práctica del login
                 y la protección de rutas sin depender de tokens JWT.
             </p>
         </div>
-        <div className="conteiner-3">
+        <div className="container-3">
             <img src= {logo3} className={styles.logo}/>
             <p>
                 Y aunque es una simulación, el enfoque fue real: trabajar como si se tratara de una aplicación en producción,

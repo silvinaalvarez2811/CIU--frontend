@@ -11,7 +11,7 @@ p{
 
 }
 
-.conteiner {
+.container {
   display: grid;
   grid-template-columns: repeat(3, 1fr); /* 3 columnas iguales */
   gap: 2rem; /* espacio entre columnas */

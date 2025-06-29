@@ -38,7 +38,7 @@ const Home = () => {
         <main className={styles.mainContent}>
           <div className={styles.createPost}>
             <Link to="/newPost" className={styles.navigate}>
-              <MdOutlinePostAdd size={35} /> ¿Qué estás pensando?
+              <MdOutlinePostAdd size={25} /> ¿Qué estás pensando?
             </Link>
           </div>
 

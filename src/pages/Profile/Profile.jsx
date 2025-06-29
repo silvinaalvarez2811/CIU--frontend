@@ -5,7 +5,7 @@ import "slick-carousel/slick/slick-theme.css";
 import { useContext, useEffect, useState } from "react";
 import { UserContext } from "../../context/UserContext";
 import { Link } from "react-router-dom";
-import styles from "./Profile.module.css";
+
 
 const Profile = () => {
   const { user } = useContext(UserContext);

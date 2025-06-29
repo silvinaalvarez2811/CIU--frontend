@@ -20,7 +20,7 @@ const Header = () => {
     <header className={styles.header}>
       <nav className={styles.navContainer}>
         <div className={styles.logoContainer}>
-          <img src={logo} alt="logo" className={styles.logoImg} />
+          <a href="/"><img src={logo} alt="logo" className={styles.logoImg} /></a>
           <p className={`${styles.logoText} ${styles.hideOnMobile}`}>
             UnaHur Anti-Social <span className={styles.logoNet}>Net</span>
           </p>
