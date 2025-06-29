@@ -28,6 +28,8 @@ function App() {
     <>
       {!rutasSinHeader.includes(path) && <Header />}
       {!rutasSinBanner.includes(path) && <Banner />}
+      const rutasSinBanner = [ "/login", "/register", "/profile", "/newpost",
+      "/post/:id", "/about-us", ];
       <main>
         <Routes>
           <Route path="/login" element={<Login />} />
