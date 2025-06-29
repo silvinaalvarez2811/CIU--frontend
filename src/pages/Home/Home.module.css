@@ -6,12 +6,12 @@
 
 .layout {
   display: grid;
-  grid-template-columns: 1fr 2.5fr 1.5fr;
+  grid-template-columns: 1.2fr 2.5fr 1.5fr;
   gap: 1rem;
   padding: 1rem 2rem;
   box-sizing: border-box;
   min-height: 100vh;
-  padding-top: 150px;
+  padding-top: 80px;
 }
 
 .asideLeft,
@@ -130,8 +130,7 @@
     width: 100%;
   }
 
-  .asideLeft,
-  .asideRight {
+  .asideLeft {
     display: none; /* ocultar aside en móviles */
   }
 
