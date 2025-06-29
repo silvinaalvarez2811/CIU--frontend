@@ -1,23 +1,34 @@
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { UserContext } from "../../context/UserContext";
+import carusel1 from "../../assets/carusel1.jpg";
+import carusel2 from "../../assets/carusel2.jpg";
+import carusel3 from "../../assets/carusel3.jpg";
+import styles from "./Login.module.css";
+
+const images = [carusel1, carusel2, carusel3];
 
 const Login = () => {
   const [nickName, setnickName] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
+  const [currentIndex, setCurrentIndex] = useState(0);
 
   const { login } = useContext(UserContext);
   const navigate = useNavigate();
 
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentIndex((prev) => (prev + 1) % images.length);
+    }, 4000);
+    return () => clearInterval(interval);
+  }, []);
+
   const handleSubmit = async (evento) => {
     evento.preventDefault();
-
     try {
-      //con el fetch al backend dado
       const response = await fetch("http://localhost:3001/users");
       const usuarios = await response.json();
-
       const usuarioEncontrado = usuarios.find((u) => u.nickName === nickName);
 
       if (!usuarioEncontrado) {
@@ -31,7 +42,6 @@ const Login = () => {
       }
 
       setError("");
-      console.log("Usuario logueado:", usuarioEncontrado);
       login(usuarioEncontrado);
       navigate("/home");
     } catch (error) {
@@ -41,49 +51,56 @@ const Login = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-900 text-white px-4">
-      <div className="max-w-md w-full bg-gray-800 p-8 rounded-lg shadow-lg">
-        <h2 className="text-3xl font-bold mb-6 text-center">
-          Inicio de sesión
-        </h2>
-        <form onSubmit={handleSubmit} className="flex flex-col gap-4">
-          <input
-            type="text"
-            placeholder="Usuario"
-            value={nickName}
-            onChange={(e) => setnickName(e.target.value)}
-            required
-            className="p-3 rounded bg-gray-700 placeholder-gray-400 text-white 
-            focus:outline-none focus:ring-2 focus:ring-blue-500"
+    <div className= {styles ["login-container"]}>
+      {/* Carrusel de fondo */}
+      <div className={styles ["carousel-wrapper"]}>
+        {images.map((img, index) => (
+          <img
+            key={index}
+            src={img}
+            alt={`slide-${index}`}
+            className={`${styles["carousel-img"]} ${index === currentIndex ? styles["active"] : ""}`}
           />
-          <input
-            type="password"
-            placeholder="Contraseña"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
-            className="p-3 rounded bg-gray-700 placeholder-gray-400 text-white 
-            focus:outline-none focus:ring-2 focus:ring-blue-500"
-          />
-          <button
-            type="submit"
-            className="bg-blue-600 hover:bg-blue-700 transition py-3 rounded font-semibold"
-          >
-            Ingresar
-          </button>
-        </form>
+        ))}
+      </div>
 
-        {error && <p className="text-red-500 mt-4 text-center">{error}</p>}
+      {/* Formulario */}
+      <div className={styles["login-overlay"]}>
+        <div className={styles["login-form"]}>
+          <h2>Inicio de sesión</h2>
+          <form onSubmit={handleSubmit}>
+            <input
+              type="text"
+              placeholder="Usuario"
+              value={nickName}
+              onChange={(e) => setnickName(e.target.value)}
+              required
+              className={styles["login-input"]}
+            />
+            <input
+              type="password"
+              placeholder="Contraseña"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              required
+              className={styles["login-input"]}
+            />
+            <button
+              type="submit"
+              class="btn btn-secondary btn-sm">
+              Ingresar
+            </button>
+          </form>
 
-        <p className="mt-6 text-center text-gray-400">
-          ¿No tenés cuenta?{" "}
-          <Link
-            to="/register"
-            className="text-blue-500 hover:underline font-semibold"
-          >
-            Registrate
-          </Link>
-        </p>
+          {error && <p className="error-message">{error}</p>}
+
+          <p className={styles["register-link"]}>
+            ¿No tenés cuenta?{" "}
+            <Link to="/register">
+              Registrate
+            </Link>
+          </p>
+        </div>
       </div>
     </div>
   );

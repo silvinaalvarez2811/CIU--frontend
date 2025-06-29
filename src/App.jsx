@@ -16,6 +16,7 @@ function App() {
   const path = location.pathname.replace(/\/+$/, "").toLowerCase();
   const rutasSinHeader = ["/login", "/register"];
   const rutasSinFooter = ["/login", "/register"];
+
   const rutasSinBanner = [
     "/login",
     "/register",
@@ -24,6 +25,7 @@ function App() {
     "/post/:id",
     "/about-us",
   ];
+
   return (
     <>
       {!rutasSinHeader.includes(path) && <Header />}
@@ -34,8 +36,10 @@ function App() {
         <Routes>
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
+          
           {/*Rutas Protegidas*/}
           <Route
+          
             path="/"
             element={
               <RutaProtegida>
