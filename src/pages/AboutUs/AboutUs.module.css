@@ -1,14 +1,21 @@
-h1{
-    text-align: center;
-    margin-bottom: 1.5rem;
-    margin-top: 1rem;
+.about {
+  background-color: white;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 2rem;
+  padding-top: 10rem;
+  min-height: calc(100vh - 60px);
+}
+h1 {
+  text-align: center;
+  margin-bottom: 1.5rem;
+  margin-top: 1rem;
 }
 
-p{
+p {
   margin-bottom: 1.5rem;
   padding: auto;
-  margin: 1rem; 
-
+  margin: 1rem;
 }
 
 .container {
@@ -19,15 +26,14 @@ p{
 }
 
 .logo {
-    width: auto;         /* Ajustá el tamaño según lo que necesites */
-    height: 200px;
-    display: block;
-    margin: 0 auto; 
-
+  width: auto; /* Ajustá el tamaño según lo que necesites */
+  height: 200px;
+  display: block;
+  margin: 0 auto;
 }
 
 @media (max-width: 768px) {
-  .conteiner {
+  .container {
     grid-template-columns: 1fr; /* una sola columna en mobile */
   }
 }

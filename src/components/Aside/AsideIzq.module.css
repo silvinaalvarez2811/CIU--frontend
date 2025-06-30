@@ -1,5 +1,8 @@
 .asideContainer {
-  background-color: #4e4c4c;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  background-color: #212020;
   padding: 1.5rem;
   border-radius: 10px;
   color: rgb(38, 37, 37);
@@ -20,7 +23,7 @@
 .cardImage {
   width: 100%; /* Que ocupe todo el ancho del contenedor */
   height: auto; /* Para mantener la proporción */
-  border-radius: 10px; /* Bordes redondeados para suavizar */
+  border-radius: 10px;
   object-fit: cover; /* Que la imagen recorte y cubra el área sin deformarse */
   display: block; /* Quita espacios extra debajo de la imagen */
 }

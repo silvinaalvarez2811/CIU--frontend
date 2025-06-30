@@ -5,20 +5,13 @@ const AsideDer = () => {
   return (
     <aside className={styles.asideContainer}>
       {/* Taller o Actividad */}
+
       <div className={styles.card}>
-        <h3>🎓 Taller: Introducción a React</h3>
+        <h3>👩‍💻 Sobre esta app</h3>
         <p>
-          Este sábado 5 de julio, aprendé los fundamentos básicos de React en un
-          taller online gratuito.
+          UnaHur Anti-Social Net fue desarrollada por estudiantes de Interfaces
+          de Usuario para simular una red social con propósito educativo.
         </p>
-        <a
-          href="https://unahur.edu.ar/talleres/react"
-          target="_blank"
-          rel="noreferrer"
-          className={styles.button}
-        >
-          Inscribite acá
-        </a>
       </div>
 
       {/* Promos Cursos */}

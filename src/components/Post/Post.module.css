@@ -3,7 +3,7 @@
   margin: 1rem auto; /* centrado horizontal y un poco de margen vertical */
   padding: 1rem;
   padding: 1rem;
-  background: var(--color-gris-oscuro-2);
+  background: #1a1a1a;
   border-radius: 4%;
 }
 .usuarioCard {
