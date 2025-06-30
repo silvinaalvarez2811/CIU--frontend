@@ -14,19 +14,24 @@
   padding-top: 80px;
 }
 
-.asideLeft,
 .asideRight {
   position: sticky;
-  top: 350px;
+  top: 150px;
   max-height: calc(100vh - 260px - 20px);
   overflow-y: auto;
   border-radius: 10px;
   margin-top: 10px;
 }
+
 .asideLeft {
-  background-color: var(--color-gris-claro);
-  color: white;
+  position: sticky;
+  top: 150px;
+  max-height: none;
+  margin-top: 10rem;
+  min-width: 200px;
+  max-width: 100%;
 }
+
 .asideRight {
   background-color: var(--color-gris-oscuro);
   color: white;
@@ -49,7 +54,7 @@
 .createPost {
   max-width: 600px;
   margin: 1rem auto;
-  padding: 1rem;
+  padding: 0.2rem;
   border: 2px solid #2f2f2f;
   background-color: #e6e4e4;
   border-radius: 10px;

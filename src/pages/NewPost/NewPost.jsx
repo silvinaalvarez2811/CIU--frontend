@@ -1,18 +1,21 @@
 import { useContext, useState, useEffect } from "react";
 import { UserContext } from "../../context/UserContext";
 import { useNavigate } from "react-router-dom";
+import styles from "./NewPost.module.css";
+import { IoImagesOutline } from "react-icons/io5";
+import Avatar from "../../components/Avatar/Avatar";
 
 const NewPost = () => {
   const { user } = useContext(UserContext);
   const navigate = useNavigate();
 
   const [description, setDescription] = useState("");
-  const [imageUrls, setImageUrls] = useState([""]);
+  const [imageUrls, setImageUrls] = useState([]);
   const [tags, setTags] = useState([]);
   const [selectedTags, setSelectedTags] = useState([]);
   const [error, setError] = useState("");
+  const [nuevaImagen, setNuevaImagen] = useState("");
 
-  // Traer las etiquetas disponibles
   useEffect(() => {
     const obtenerTags = async () => {
       try {
@@ -34,22 +37,35 @@ const NewPost = () => {
       return;
     }
 
+    // Limpio la URL nueva, y preparo la lista final de imágenes
+    const urlLimpia = nuevaImagen.trim();
+    let imagenesFinales = [...imageUrls];
+
+    // Si la URL nueva no está vacía y no está ya en el array, la agrego
+    if (urlLimpia !== "" && !imagenesFinales.includes(urlLimpia)) {
+      imagenesFinales.push(urlLimpia);
+    }
+
+    // Limpio duplicados y URLs vacías
+    const imagenesValidas = Array.from(
+      new Set(imagenesFinales.filter(Boolean))
+    );
+
     try {
-      // Crear el post
+      // Creo el post primero
       const resPost = await fetch("http://localhost:3001/posts", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           description,
           userId: user.id,
-          tagIds: selectedTags, // asi??
+          tagIds: selectedTags,
         }),
       });
 
       const nuevoPost = await resPost.json();
 
-      // Crear imágenes (si hay URLs)
-      const imagenesValidas = imageUrls.filter((url) => url.trim() !== "");
+      // Envío cada imagen, una por una, pero sin repetir
       for (const url of imagenesValidas) {
         await fetch("http://localhost:3001/postimages", {
           method: "POST",
@@ -77,76 +93,94 @@ const NewPost = () => {
     }
   };
 
-  const handleImageChange = (index, value) => {
-    const nuevasUrls = [...imageUrls];
-    nuevasUrls[index] = value;
-    setImageUrls(nuevasUrls);
+  const agregarImagen = () => {
+    const urlLimpia = nuevaImagen.trim();
+    if (urlLimpia !== "" && !imageUrls.includes(urlLimpia)) {
+      setImageUrls([...imageUrls, urlLimpia]);
+      setNuevaImagen("");
+    }
   };
 
-  const agregarCampoImagen = () => {
-    setImageUrls([...imageUrls, ""]);
+  const eliminarImagen = (index) => {
+    const nuevas = imageUrls.filter((_, i) => i !== index);
+    setImageUrls(nuevas);
   };
 
   return (
-    <div className="container mt-4">
-      <h2 className="text-primary">Crear nueva publicación</h2>
-      {error && <p className="text-danger">{error}</p>}
-      <form onSubmit={handleSubmit} className="mt-4">
-        <div className="mb-3">
-          <label className="form-label">Descripción</label>
-          <textarea
-            className="form-control"
-            value={description}
-            onChange={(e) => setDescription(e.target.value)}
-            required
-          ></textarea>
+    <div className={styles.borderWrapper}>
+      <div className={styles.container}>
+        <div className={styles.title}>
+          <Avatar user={user} extraClass="avatarPost" />
+          <h2 className={styles.title}>¿Qué estás pensando?</h2>
         </div>
+        {error && <p className={styles.error}>{error}</p>}
 
-        <div className="mb-3">
-          <label className="form-label">URLs de imágenes</label>
-          {imageUrls.map((url, index) => (
-            <input
-              key={`imagen-${index}`}
-              type="text"
-              value={url}
-              onChange={(e) => handleImageChange(index, e.target.value)}
-              className="form-control mb-2"
-              placeholder="Pegá la URL de tu imagen, ej: https://miweb.com/imagen.jpg"
-            />
-          ))}
-          <button
-            type="button"
-            className="btn btn-outline-secondary btn-sm"
-            onClick={agregarCampoImagen}
-          >
-            Agregar otra imagen
-          </button>
-        </div>
-
-        <div className="mb-3">
-          <label className="form-label">Etiquetas</label>
-          <div className="d-flex flex-wrap gap-2">
-            {tags.map((tag) => (
-              <div key={tag.id} className="form-check">
-                <input
-                  type="checkbox"
-                  value={tag.id}
-                  onChange={handleTagChange}
-                  className="form-check-input"
-                  id={`tag-${tag.id}`}
-                />
-                <label className="form-check-label" htmlFor={`tag-${tag.id}`}>
-                  #{tag.name}
-                </label>
-              </div>
-            ))}
+        <form onSubmit={handleSubmit} className={styles.form}>
+          {/* Descripción */}
+          <div className={styles.formGroup}>
+            <textarea
+              className={styles.textarea}
+              value={description}
+              onChange={(e) => setDescription(e.target.value)}
+              required
+            ></textarea>
           </div>
-        </div>
 
-        <button type="submit" className="btn btn-primary">
-          Publicar
-        </button>
-      </form>
+          {/* Agregar imágenes */}
+          <div className={styles.formGroup}>
+            <div className={styles.addImages}>
+              <label className={styles.label}>
+                <IoImagesOutline size={26} />
+                Agregá tu foto
+              </label>
+            </div>
+            <div className={styles.imageInputWrapper}>
+              <input
+                type="text"
+                value={nuevaImagen}
+                onChange={(e) => setNuevaImagen(e.target.value)}
+                className={styles.input}
+                placeholder="ej: https://miweb.com/imagen.jpg"
+              />
+              <button
+                type="button"
+                className={styles.addButton}
+                onClick={agregarImagen}
+              >
+                Confirmar
+              </button>
+            </div>
+          </div>
+
+          {/* Etiquetas */}
+          <div className={styles.formGroup}>
+            <div className={styles.tagsWrapper}>
+              {tags.map((tag) => (
+                <div key={tag.id} className={styles.checkboxWrapper}>
+                  <input
+                    type="checkbox"
+                    value={tag.id}
+                    onChange={handleTagChange}
+                    className={styles.checkbox}
+                    id={`tag-${tag.id}`}
+                  />
+                  <label
+                    className={styles.checkboxLabel}
+                    htmlFor={`tag-${tag.id}`}
+                  >
+                    #{tag.name}
+                  </label>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Botón de enviar */}
+          <button type="submit" className={styles.submitButton}>
+            Publicar
+          </button>
+        </form>
+      </div>
     </div>
   );
 };

@@ -27,20 +27,19 @@
   --color-destacado2: var(--color-rojo-2);
 }
 
-body {
-  background-color: var(--color-fondo);
-  color: var(--color-texto-principal);
+body,
+html {
   font-family: "Montserrat", "Lato", "Nunito", "Ubuntu", sans-serif;
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+
+  /*min-height: 100vh; me cambia el aside izq*/
   margin: 0;
 }
 main {
-  padding-top: 0; /*esto esta agregandole espacios al banner y a 
-  la pagina de login*/
+  padding-top: 80px;
 }
-
 
 h1,
 h2,

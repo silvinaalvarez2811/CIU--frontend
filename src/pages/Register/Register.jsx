@@ -1,9 +1,9 @@
 import { useState, useContext } from "react";
 import { UserContext } from "../../context/UserContext";
 import { useNavigate } from "react-router-dom";
-import logo from "../../assets/antisocial-logo.png"
-import background from "../../assets/fondo-register2.jpg"
-import style from "../Register/Register.module.css"
+import logo from "../../assets/antisocial-logo.png";
+import background from "../../assets/fondo-register2.jpg";
+import style from "../Register/Register.module.css";
 
 const Register = () => {
   const [nickName, setNickName] = useState("");
@@ -54,42 +54,54 @@ const Register = () => {
   };
 
   return (
-    <div className={style["body-register"]} style={{ backgroundImage: `url(${background})` }}>
-    <div className="min-h-screen flex items-center justify-center text-white px-4">
-      <div className="max-w-md w-full bg-gray-800 p-8 rounded-lg shadow-lg">
-       <div className={style["conteiner-logo"]}>
-          <img src={logo} alt="Logo" className={style.logo} />
-        </div>
-        <h2 className="text-2xl font-bold mb-6 text-center">Registro</h2>
-        <p>Registrate para ver fotos de tus amigos</p>
-        <form onSubmit={handleSubmit} className="flex flex-col gap-4">
-          <input
-            type="text"
-            placeholder="Nombre de usuario"
-            value={nickName}
-            onChange={(e) => setNickName(e.target.value)}
-            required
-            className="p-3 rounded bg-gray-700 placeholder-gray-400 text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
-          />
-          <input
-            type="email"
-            placeholder="Correo electrónico"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            required
-            className="p-3 rounded bg-gray-700 placeholder-gray-400 text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
-          />
-          <button
-            type="submit"
-            className="bg-orange-600 hover:bg-yellow-700 transition py-3 rounded font-semibold"
-          >
-            Registrarse
-          </button>
-        </form>
+    <div
+      className={style["body-register"]}
+      style={{ backgroundImage: `url(${background})` }}
+    >
+      <div className="min-h-screen flex items-center justify-center text-white px-4">
+        <div className="max-w-md w-full bg-gray-800 p-8 rounded-lg shadow-lg">
+          <div className={style["conteiner-logo"]}>
+            <div
+              className="bg-white rounded-2xl p-2 flex justify-center 
+            items-center w-24 h-24 mx-auto mb-4"
+            >
+              <img
+                src={logo}
+                alt="Logo"
+                className="w-full h-full object-contain"
+              />
+            </div>
+          </div>
+          <h2 className="text-2xl font-bold mb-6 text-center">Registro</h2>
+          <p>Registrate para ver fotos de tus amigos</p>
+          <form onSubmit={handleSubmit} className="flex flex-col gap-4">
+            <input
+              type="text"
+              placeholder="Nombre de usuario"
+              value={nickName}
+              onChange={(e) => setNickName(e.target.value)}
+              required
+              className="p-3 rounded bg-gray-700 placeholder-gray-400 text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
+            />
+            <input
+              type="email"
+              placeholder="Correo electrónico"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+              className="p-3 rounded bg-gray-700 placeholder-gray-400 text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
+            />
+            <button
+              type="submit"
+              className="bg-orange-600 hover:bg-yellow-700 transition py-3 rounded font-semibold"
+            >
+              Registrarse
+            </button>
+          </form>
 
-        {error && <p className="text-red-500 mt-4 text-center">{error}</p>}
+          {error && <p className="text-red-500 mt-4 text-center">{error}</p>}
+        </div>
       </div>
-    </div>
     </div>
   );
 };

@@ -6,7 +6,6 @@ import { useContext, useEffect, useState } from "react";
 import { UserContext } from "../../context/UserContext";
 import { Link } from "react-router-dom";
 
-
 const Profile = () => {
   const { user } = useContext(UserContext);
   const [posts, setPosts] = useState([]);
@@ -58,10 +57,8 @@ const Profile = () => {
   }, [user.id]);
 
   return (
-    <div className="container mt-4">
-      <h2>Perfil de {user.nickName}</h2>
-      <h4>Mis publicaciones</h4>
-
+    <div className="container py-4 mt-14">
+      <p>""</p>
       {loading ? (
         <p>Cargando publicaciones...</p>
       ) : posts.length === 0 ? (
@@ -70,18 +67,28 @@ const Profile = () => {
         <div className="row">
           {posts.map((post) => (
             <div key={post.id} className="col-md-4 mb-4">
-              <div className="card">
+              <div
+                className="card shadow-sm h-100 "
+                style={{ maxWidth: "300px", margin: "0 auto" }}
+              >
                 {/* mostrar primera imagen si hay */}
                 {post.images.length > 0 && (
                   <img
                     src={post.images[0].url}
                     alt="Imagen del post"
                     className="card-img-top"
-                    style={{ maxHeight: "200px", objectFit: "cover" }}
+                    style={{
+                      height: "280px",
+                      width: "100%",
+                      objectFit: "cover",
+                      objectPosition: "top",
+                    }}
                   />
                 )}
                 <div className="card-body">
-                  <h5 className="card-title">{post.description}</h5>
+                  <h5 className="card-title text-center border rounded p-2 bg-light">
+                    {post.description}
+                  </h5>
 
                   {/*  mostrar tags si hay */}
                   {post.Tags?.length > 0 && (
@@ -94,7 +101,7 @@ const Profile = () => {
                     </div>
                   )}
                   {/*mostrar cantidad y texto de comentarios si hay*/}
-                  <p className="card-text">
+                  <p className="card-text text-muted text-center">
                     {post.comments?.length || 0} comentario
                     {post.comments?.length !== 1 ? "s" : ""}
                   </p>
@@ -105,15 +112,21 @@ const Profile = () => {
                       </p>
                       <ul className="list-unstyled">
                         {post.comments.slice(0, 2).map((c) => (
-                          <li key={c.id}>🗨️ {c.content}</li>
+                          <li key={c.id}> {c.content}</li>
                         ))}
                       </ul>
                     </div>
                   )}
 
-                  <Link to={`/post/${post.id}`} className="btn btn-primary">
-                    Ver más
-                  </Link>
+                  <div className="d-flex justify-content-center">
+                    <Link
+                      to={`/post/${post.id}`}
+                      className="px-4 py-2 bg-orange-600 hover:bg-orange-400 text-white rounded"
+                      style={{ minWidth: "100px" }}
+                    >
+                      Ver más
+                    </Link>
+                  </div>
                 </div>
               </div>
             </div>

@@ -9,9 +9,7 @@ import RutaProtegida from "./components/RutaProtegida";
 import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
 import AboutUs from "./pages/AboutUs/AboutUs";
-{
-  /*import Banner from "./components/Banner/Banner";*/
-}
+import styles from "./App.module.css";
 
 function App() {
   const location = useLocation();
@@ -19,24 +17,11 @@ function App() {
   const rutasSinHeader = ["/login", "/register"];
   const rutasSinFooter = ["/login", "/register"];
 
-  {
-    /*const rutasSinBanner = [
-    "/login",
-    "/register",
-    "/profile",
-    "/newpost",
-    "/post/:id",
-    "/about-us",
-  ];*/
-  }
-
   return (
-    <>
+    <div className={styles.appContainer}>
       {!rutasSinHeader.includes(path) && <Header />}
-      {/* {!rutasSinBanner.includes(path) && <Banner />}
-      const rutasSinBanner = [ "/login", "/register", "/profile", "/newpost",
-      "/post/:id", "/about-us", ];*/}
-      <main>
+
+      <main className={styles.main}>
         <Routes>
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
@@ -86,7 +71,7 @@ function App() {
         </Routes>
       </main>
       {!rutasSinFooter.includes(path) && <Footer />}
-    </>
+    </div>
   );
 }
 
