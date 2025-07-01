@@ -12,11 +12,11 @@
 
 main {
   flex-grow: 1;
-
-  padding: 1rem; /* Opcional */
+  display: flex;
+  justify-content: center;
   background-image: url("../src/assets/fondo-register2.jpg");
-  background-repeat: no-repeat; /* para que no se repita */
-  background-size: cover; /* para que cubra todo el contenedor */
-  background-position: center center; /* para centrar la imagen */
-  background-attachment: fixed; /* opcional, para que la imagen quede fija */
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+  background-attachment: fixed;
 }

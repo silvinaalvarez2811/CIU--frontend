@@ -35,7 +35,7 @@ const Home = () => {
           <AsideIzq />
         </aside>
 
-        <main className={styles.mainContent}>
+        <section className={styles.mainContent}>
           <div className={styles.createPost}>
             <Link to="/newPost" className={styles.navigate}>
               <MdOutlinePostAdd size={25} /> ¿Qué estás pensando?
@@ -57,7 +57,7 @@ const Home = () => {
               ))}
             </div>
           )}
-        </main>
+        </section>
 
         <aside className={styles.asideRight}>
           <AsideDer />

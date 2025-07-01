@@ -141,7 +141,7 @@ const PostDetail = () => {
           >
             <Slider
               dots={true}
-              infinite={true}
+              infinite={false}
               speed={500}
               slidesToShow={1}
               slidesToScroll={1}
@@ -168,7 +168,7 @@ const PostDetail = () => {
 
         {/* Comentarios */}
         <h4
-          className="text-center text-white mb-3 d-flex 
+          className="text-center text-white mb-3 d-flex
           justify-content-center align-items-center fs-4"
           style={{ paddingTop: "2rem" }}
         >

@@ -5,7 +5,7 @@
   top: 0;
   left: 0;
   width: 100%;
-  z-index: 999; /* que siempre se vea el header*/
+  z-index: 999;
 }
 
 .navContainer {
@@ -78,7 +78,6 @@
   opacity: 0.8;
 }
 
-/* Celulares y tablets */
 @media (max-width: 1024px) {
   .hideOnMobile {
     display: none !important;

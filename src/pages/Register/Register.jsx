@@ -42,7 +42,6 @@ const Register = () => {
       }
 
       const nuevoUsuario = await response.json();
-      //console.log("Usuario recibido del backend:", nuevoUsuario);
 
       login(nuevoUsuario); // guardo usuario en contexto y localStorage
       alert(`Te has registrado correctamente, ${nuevoUsuario.nickName}`);

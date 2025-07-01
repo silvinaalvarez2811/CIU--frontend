@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import styles from "./NewPost.module.css";
 import { IoImagesOutline } from "react-icons/io5";
 import Avatar from "../../components/Avatar/Avatar";
+import { FaCheckCircle } from "react-icons/fa";
 
 const NewPost = () => {
   const { user } = useContext(UserContext);
@@ -151,6 +152,14 @@ const NewPost = () => {
               </button>
             </div>
           </div>
+
+          {imageUrls.map((imagen, index) => (
+            <div className={styles.imagenesGuardadas} key={imagen + index}>
+              <FaCheckCircle size={30} />
+              {"  "}
+              <span>{imagen}</span>
+            </div>
+          ))}
 
           {/* Etiquetas */}
           <div className={styles.formGroup}>

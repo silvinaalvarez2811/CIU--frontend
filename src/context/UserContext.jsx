@@ -5,7 +5,7 @@ import { createContext, useState, useEffect } from "react";
 
 export const UserContext = createContext(null);
 
-//se crea el componente que envuelve a app y que da acceso a los datos aqui definidos
+//se crea el componente que envuelve a app y que da acceso a los datos que se definan aca
 export const UserProvider = ({ children }) => {
   const [user, setUser] = useState(null);
 
@@ -25,7 +25,7 @@ export const UserProvider = ({ children }) => {
     setUser(null);
     localStorage.removeItem("usuario");
   };
-  //esto es lo que todos los componentes va a poder obtener
+  //esto es lo que todos los componentes van a poder obtener
   return (
     <UserContext.Provider value={{ user, login, logout }}>
       {children}
@@ -34,5 +34,5 @@ export const UserProvider = ({ children }) => {
 };
 
 //Provider es una propiedad de createContext
-//significa que el contexto UserContext va a proverr los valores de user, login y logout
+//significa que el contexto UserContext va a prover los valores de user, login y logout
 //que  todos los hijos que esten envueltos (wrap) por provider van a tener acceso

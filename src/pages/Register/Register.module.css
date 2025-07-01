@@ -1,15 +1,12 @@
-
 .body-register {
   min-height: 100vh;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-
 }
 
-
 .logoutButton {
-  background-color: #dc2626; /* rojo */
+  background-color: #dc2626;
   color: white;
   border: none;
   padding: 0.5rem 1rem;
@@ -26,13 +23,11 @@
   color: #93c5fd;
 }
 
-/*logo*/
-
 .conteiner-logo {
   display: flex;
-  justify-content: center; 
-  align-items: center;     
-  height: auto;          
+  justify-content: center;
+  align-items: center;
+  height: auto;
   width: 100%;
 }
 
@@ -41,6 +36,6 @@ p {
 }
 
 .logo {
-  width: 100px;     
+  width: 100px;
   height: auto;
 }

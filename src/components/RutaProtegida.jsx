@@ -13,7 +13,6 @@ const RutaProtegida = ({ children }) => {
   }, []);
 
   if (cargando) {
-    // Opcional: podés mostrar un loader o nada
     return null;
   }
 

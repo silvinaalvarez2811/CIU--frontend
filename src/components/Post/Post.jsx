@@ -7,10 +7,8 @@ import { Link } from "react-router-dom";
 import styles from "./Post.module.css";
 import Avatar from "../Avatar/Avatar";
 import { FaCommentDots } from "react-icons/fa";
-//import PostContent from "./PostContent";
 
 const Post = ({ post }) => {
-  //useStste podria ser []en images? probar
   const [images, setImages] = useState([]);
   const [comments, setComments] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -48,8 +46,6 @@ const Post = ({ post }) => {
     fetchData();
   }, [post.id]);
 
-  {
-  }
   return (
     <div className={styles.postCard}>
       <div className={styles.usuarioCard}>
@@ -60,7 +56,7 @@ const Post = ({ post }) => {
         <Slider
           {...{
             dots: true,
-            infinite: true,
+            infinite: false,
             speed: 500,
             slidesToShow: 1,
             slidesToScroll: 1,

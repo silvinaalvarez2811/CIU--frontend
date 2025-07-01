@@ -1,11 +1,12 @@
 .about {
+  max-width: 1024px;
   background-color: white;
   width: 100%;
   box-sizing: border-box;
   padding: 2rem;
   padding-top: 10rem;
-  min-height: calc(100vh - 60px);
 }
+
 h1 {
   text-align: center;
   margin-bottom: 1.5rem;
@@ -20,13 +21,13 @@ p {
 
 .container {
   display: grid;
-  grid-template-columns: repeat(3, 1fr); /* 3 columnas iguales */
-  gap: 2rem; /* espacio entre columnas */
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
   padding: 1rem;
 }
 
 .logo {
-  width: auto; /* Ajustá el tamaño según lo que necesites */
+  width: auto;
   height: 200px;
   display: block;
   margin: 0 auto;
@@ -34,6 +35,6 @@ p {
 
 @media (max-width: 768px) {
   .container {
-    grid-template-columns: 1fr; /* una sola columna en mobile */
+    grid-template-columns: 1fr;
   }
 }

@@ -4,7 +4,7 @@ const Avatar = ({ user, extraClass = "" }) => {
     if (!name) {
       return "";
     }
-    // eliminamos espacios y dividimos en palabras (no caracteres)
+    // elimina espacios y divide en palabras (no caracteres)
     const nombres = name.trim().split(" ");
     if (nombres.length === 1) {
       // devuelve la primera letra en mayúscula
@@ -14,7 +14,7 @@ const Avatar = ({ user, extraClass = "" }) => {
       return (nombres[0][0] + nombres[1][0]).toUpperCase();
     }
   };
-
+  //se usa con fondo de color y fondo blanco extraclass
   return (
     <div className={`${styles.avatar} ${styles[extraClass]}`}>
       {getInitials(user.nickName)}
