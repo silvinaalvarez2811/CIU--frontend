@@ -6,50 +6,50 @@ Permite registrarse, iniciar sesión (simulada), ver publicaciones, crear nuevas
 
 ---
 
-## Descripción general
+## 📌 Descripción general
 
 Este proyecto consume una API externa provista como “caja negra” para simular el comportamiento de una red social.  
 Los usuarios pueden interactuar con publicaciones que incluyen imágenes, etiquetas y comentarios.
 
 ---
 
-## Tecnologías utilizadas
+## 🚀 Tecnologías utilizadas
 
-- React
-- React Router DOM
-- Context API
-- Bootstrap 
--  Fetch API
-- CSS Modules 
+   - React
+   - React Router DOM
+   - Context API
+   - Bootstrap 
+   -  Fetch API
+   - CSS Modules 
 
 ---
 
-## Flujo del usuario
+## 🧭 Flujo del usuario
 
-1.  Si el usuario está logueado ingresa directamente a Home
-2. Si no está logueado, ingresa con login simulado (con contraseña fija `123456`)
-3. Caso contrario debe  registrarse
-4. Accede al Home con el feed de publicaciones
-5. Puede:
-   - Ver detalles de cada publicación
-   - Comentar publicaciones
-   - Crear nuevas publicaciones (con imágenes y etiquetas)
-   - Ver su perfil con sus publicaciones propias
+   1.  Si el usuario está logueado ingresa directamente a Home
+   2. Si no está logueado, ingresa con login simulado (con contraseña fija `123456`)
+   3. Caso contrario debe  registrarse
+   4. Accede al Home con el feed de publicaciones
+   5. Puede:
+      - Ver detalles de cada publicación
+      - Comentar publicaciones
+      - Crear nuevas publicaciones (con imágenes y etiquetas)
+      - Ver su perfil con sus publicaciones propias
      
 ---
 
 ## Instalación y ejecución
 
-### 1. Clonar el repositorio
+   ### 1. Clonar el repositorio
 
-git clone https://github.com/silvinaalvarez2811/CIU--frontend.git
-cd CIU--frontend
+   git clone https://github.com/silvinaalvarez2811/CIU--frontend.git
+   cd CIU--frontend
 
-### 2. Instalar dependencias
-npm install
+   ### 2. Instalar dependencias
+   npm install
 
-### 3. Ejecutar el proyecto
-npm run dev
+   ### 3. Ejecutar el proyecto
+   npm run dev
 
 ## Conexión con el Backend
 
@@ -61,18 +61,18 @@ http://localhost:3001
 
 ## Pasos para iniciar el backend
 
-### 1-Clonar el repositorio
-git clone https://github.com/lucasfigarola/backend-api.git
-cd backend-api
+   ### 1-Clonar el repositorio
+      git clone https://github.com/lucasfigarola/backend-api.git
+      cd backend-api
 
-### 2-Instalar dependencias:
-npm install
+   ### 2-Instalar dependencias:
+      npm install
 
-### 3-Poblar la base de datos con datos de ejemplo:
-node seed.js
+   ### 3-Poblar la base de datos con datos de ejemplo:
+      node seed.js
 
-### 4-Iniciar el servidor:
-npm start
+   ### 4-Iniciar el servidor:
+      npm start
 
 ## Autores
 
