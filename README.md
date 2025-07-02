@@ -43,13 +43,13 @@ Los usuarios pueden interactuar con publicaciones que incluyen imágenes, etique
    ### 1. Clonar el repositorio
 
    git clone https://github.com/silvinaalvarez2811/CIU--frontend.git
-   cd CIU--frontend
+      cd CIU--frontend
 
    ### 2. Instalar dependencias
-   npm install
+      npm install
 
    ### 3. Ejecutar el proyecto
-   npm run dev
+      npm run dev
 
 ## Conexión con el Backend
 
@@ -57,7 +57,7 @@ Este frontend consume una API externa desarrollada por el docente.
 La API permite manejar usuarios, publicaciones, imágenes, comentarios y etiquetas.
 
 ## URL base del backend
-http://localhost:3001
+   http://localhost:3001
 
 ## Pasos para iniciar el backend
 
