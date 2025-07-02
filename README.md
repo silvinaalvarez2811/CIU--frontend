@@ -55,10 +55,10 @@ Los usuarios pueden interactuar con publicaciones que incluyen imágenes, etique
 ## 📂 Instalación y ejecución
 
    ### 1. Clonar el repositorio
-
+   ```bash
    git clone https://github.com/silvinaalvarez2811/CIU--frontend.git
-      cd CIU--frontend
-
+   cd CIU--frontend
+   ```
    ### 2. Instalar dependencias
       npm install
 
