@@ -8,7 +8,7 @@ Permite registrarse, iniciar sesión (simulada), ver publicaciones, crear nuevas
 ## ⚠️ Importante sobre el backend
 
 Este proyecto consume una API externa provista como “caja negra” para simular el comportamiento de una red social.  
-Para facilitar las pruebas, el repositorio incluye una copia del archivo `seed.js` dentro de la carpeta `/backend-utils/` del frontend. EL archivo `seed.js` no puede ser ejecutado desde el frontend, pero se incluye como referencia para facilitar el proceso de prueba.
+Para facilitar las pruebas, el repositorio incluye una copia del archivo `seed.js` en nuestro proyecto de frontend. EL archivo `seed.js` no puede ser ejecutado desde el frontend, pero se incluye como referencia para facilitar el proceso de prueba.
 
 - Copiar el archivo en la carpeta del backend donde está package.json
 
@@ -83,7 +83,7 @@ La API permite manejar usuarios, publicaciones, imágenes, comentarios y etiquet
       npm install
 
    ### 3-Poblar la base de datos con datos de ejemplo:
-      - Copiar el archivo `seed.js` desde `/backend-utils/` hacia la raíz del backend (junto a `package.json`)
+      - Copiar el archivo `seed.js` desde el frontend hacia la raíz del backend (junto a `package.json`)
       - Luego, desde esa carpeta, ejecutarlo con:
       
       node seed.js
